@@ -6,7 +6,7 @@
   <arg name="load_gripper" default="true" />
   <arg name="xacro_args"   default="" />
 
-  <!-- Loard robot description. Needs hand and arm arguments -->
+  <!-- Load robot description. Needs hand and arm arguments -->
   <param name="robot_description" command="$(find xacro)/xacro $(find franka_description)/robots/$(arg robot)/$(arg robot).urdf.xacro hand:=$(arg load_gripper) arm_id:=$(arg arm_id) $(arg xacro_args)"/>
 
   <!-- Gripper: if gripper loaded, launch its process -->
@@ -21,7 +21,7 @@
     <param name="robot_ip" value="$(arg robot_ip)" />
   </node>
 
-  <!-- Enable position_joint_trajectory_controller or effort_joint_trajectory_controller or franka_state_controller-->
+  <!-- Set position_joint_trajectory_controller or effort_joint_trajectory_controller or franka_state_controller to param server-->
   <rosparam command="load" file="$(find franka_control)/config/default_controllers.yaml" subst_value="true" />
 
   <!-- Franka state controller to publish (jnt pos/vel/effort) (cart pose) (robot mode) (collision info) (other) -->
